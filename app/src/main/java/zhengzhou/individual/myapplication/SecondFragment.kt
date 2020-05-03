@@ -76,6 +76,9 @@ class SecondFragment : Fragment() {
 
     fun updateUIThread() {
         val client = OkHttpClient()
+        val utls = JUtils()
+        utls.javaMethod()
+        JUtils.javaStaticMethod()
         val request = Request.Builder().url(url).build()
         client.newCall(request).enqueue(object : Callback { // enquene 以为 着异步
             override fun onFailure(call: Call, e: IOException) {
@@ -97,6 +100,9 @@ class SecondFragment : Fragment() {
     fun updateUICoroutine() {
         val client = OkHttpClient()
         val request = Request.Builder().url(url).build()
+        KUtils.kotlinStaticMethod()
+        val kutils = KUtils()
+        kutils.kotlinMethod()
         GlobalScope.launch(Dispatchers.Default) {
             val response = client.newCall(request).execute()
             if (response!!.isSuccessful) {
